@@ -30,6 +30,7 @@ public class UserServiceController {
     @PostMapping("/credit")
     @ResponseBody
     public APIResponse credit(@RequestBody UserCreditRequest userCreditRequest) throws Exception {
+        userCreditService.topUpUserBalance(userCreditRequest.getUserEmailId(),userCreditRequest.getTopUp());
         return APIResponse.buildSuccess("");
     }
 
