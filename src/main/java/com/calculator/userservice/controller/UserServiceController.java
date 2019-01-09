@@ -6,21 +6,30 @@ import com.calculator.userservice.exceptions.APIBaseException;
 import com.calculator.userservice.model.request.UserCreditRequest;
 import com.calculator.userservice.model.request.UserDebitRequest;
 import com.calculator.userservice.model.response.APIResponse;
+import com.calculator.userservice.service.UserCreditService;
+import com.calculator.userservice.service.UserDebitService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/user")
 public class UserServiceController {
 
+    @Autowired
+    private UserCreditService userCreditService;
+
+    @Autowired
+    private UserDebitService userDebitService;
+
     @PostMapping("/debit")
     @ResponseBody
-    public APIResponse calculate(@RequestBody UserDebitRequest userDebitRequest) throws Exception {
+    public APIResponse debit(@RequestBody UserDebitRequest userDebitRequest) throws Exception {
         return APIResponse.buildSuccess("");
     }
 
     @PostMapping("/credit")
     @ResponseBody
-    public APIResponse calculate(@RequestBody UserCreditRequest userCreditRequest) throws Exception {
+    public APIResponse credit(@RequestBody UserCreditRequest userCreditRequest) throws Exception {
         return APIResponse.buildSuccess("");
     }
 
